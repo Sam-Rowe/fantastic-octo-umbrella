@@ -27,9 +27,13 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     plt.savefig('/tmp/generationmix.png')
     plt.close()
 
-    # read /tmp/generationmix.png file into bytearray called image_bytes
-    with open('/tmp/generationmix.png', 'rb') as image_file:
-        image_bytes = image_file.read()
-        # return the image_bytes as func.HttpResponse
-        return func.HttpResponse(image_bytes, mimetype='image/png')
-    
+
+    # read /tmp/generationmix.png as a byte array
+    with open('/tmp/generationmix.png', 'rb') as f:
+        # read the file into a byte array  
+        img_bytes = f.read()
+        # return the bytearray as a func.HttpResponse
+        return func.HttpResponse(img_bytes, mimetype='image/png')
+
+
+        
